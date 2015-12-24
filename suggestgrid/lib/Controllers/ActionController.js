@@ -1,7 +1,7 @@
 /**
  * suggestgrid
  *
- * This file was automatically generated for SuggestGrid by APIMATIC BETA v2.0 on 12/14/2015
+ * This file was automatically generated for SuggestGrid by APIMATIC BETA v2.0 on 12/24/2015
  */
 
 var request = require('../Http/Client/RequestClient'),
@@ -64,13 +64,13 @@ var ActionController = {
                 //Error handling using HTTP status codes
                 if (response.statusCode == 400) {
                     callback({errorMessage: "Required `userid` or `itemid` parameters are missing from the request body.", errorCode: 400, errorResponse:response.body},null,context);
-                }else if (response.statusCode == 402) {
+                } else if (response.statusCode == 402) {
                     callback({errorMessage: "Action limit exceeded.", errorCode: 402, errorResponse:response.body},null,context);
-                }else if (response.statusCode == 429) {
+                } else if (response.statusCode == 429) {
                     callback({errorMessage: "Too many requests.", errorCode: 429, errorResponse:response.body},null,context);
-                }else if (response.statusCode == 500) {
+                } else if (response.statusCode == 500) {
                     callback({errorMessage: "Unexpected internal error.", errorCode: 500, errorResponse:response.body},null,context);
-                }else {
+                } else {
                     callback({errorMessage: "HTTP Response Not OK", errorCode: response.statusCode, errorResponse:response.body},null,context);
                 }
             }
@@ -136,11 +136,11 @@ var ActionController = {
                 //Error handling using HTTP status codes
                 if (response.statusCode == 400) {
                     callback({errorMessage: "Required `userid` or `itemid` parameters are missing from the request body.", errorCode: 400, errorResponse:response.body},null,context);
-                }else if (response.statusCode == 429) {
+                } else if (response.statusCode == 429) {
                     callback({errorMessage: "Too many requests.", errorCode: 429, errorResponse:response.body},null,context);
-                }else if (response.statusCode == 500) {
+                } else if (response.statusCode == 500) {
                     callback({errorMessage: "Unexpected internal error.", errorCode: 500, errorResponse:response.body},null,context);
-                }else {
+                } else {
                     callback({errorMessage: "HTTP Response Not OK", errorCode: response.statusCode, errorResponse:response.body},null,context);
                 }
             }
@@ -198,9 +198,9 @@ var ActionController = {
                 //Error handling using HTTP status codes
                 if (response.statusCode == 429) {
                     callback({errorMessage: "Too many requests.", errorCode: 429, errorResponse:response.body},null,context);
-                }else if (response.statusCode == 500) {
+                } else if (response.statusCode == 500) {
                     callback({errorMessage: "Unexpected internal error.", errorCode: 500, errorResponse:response.body},null,context);
-                }else {
+                } else {
                     callback({errorMessage: "HTTP Response Not OK", errorCode: response.statusCode, errorResponse:response.body},null,context);
                 }
             }
@@ -260,11 +260,11 @@ var ActionController = {
                 //Error handling using HTTP status codes
                 if (response.statusCode == 400) {
                     callback({errorMessage: "The given timestamp is in the future.", errorCode: 400, errorResponse:response.body},null,context);
-                }else if (response.statusCode == 429) {
+                } else if (response.statusCode == 429) {
                     callback({errorMessage: "Too many requests.", errorCode: 429, errorResponse:response.body},null,context);
-                }else if (response.statusCode == 500) {
+                } else if (response.statusCode == 500) {
                     callback({errorMessage: "Unexpected internal error.", errorCode: 500, errorResponse:response.body},null,context);
-                }else {
+                } else {
                     callback({errorMessage: "HTTP Response Not OK", errorCode: response.statusCode, errorResponse:response.body},null,context);
                 }
             }

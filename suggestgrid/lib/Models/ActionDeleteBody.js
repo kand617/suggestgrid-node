@@ -2,7 +2,7 @@
 /**
  * suggestgrid
  *
- * This file was automatically generated for SuggestGrid by APIMATIC BETA v2.0 on 12/14/2015
+ * This file was automatically generated for SuggestGrid by APIMATIC BETA v2.0 on 12/24/2015
  */
 var BaseModel = require("./BaseModel");
 /**

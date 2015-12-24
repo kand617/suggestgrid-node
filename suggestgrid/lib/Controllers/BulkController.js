@@ -1,7 +1,7 @@
 /**
  * suggestgrid
  *
- * This file was automatically generated for SuggestGrid by APIMATIC BETA v2.0 on 12/14/2015
+ * This file was automatically generated for SuggestGrid by APIMATIC BETA v2.0 on 12/24/2015
  */
 
 var request = require('../Http/Client/RequestClient'),
@@ -64,11 +64,11 @@ var BulkController = {
                 //Error handling using HTTP status codes
                 if (response.statusCode == 402) {
                     callback({errorMessage: "Action limit exceeded.", errorCode: 402, errorResponse:response.body},null,context);
-                }else if (response.statusCode == 429) {
+                } else if (response.statusCode == 429) {
                     callback({errorMessage: "Too many requests.", errorCode: 429, errorResponse:response.body},null,context);
-                }else if (response.statusCode == 500) {
+                } else if (response.statusCode == 500) {
                     callback({errorMessage: "Unexpected internal error.", errorCode: 500, errorResponse:response.body},null,context);
-                }else {
+                } else {
                     callback({errorMessage: "HTTP Response Not OK", errorCode: response.statusCode, errorResponse:response.body},null,context);
                 }
             }
@@ -130,11 +130,11 @@ var BulkController = {
                 //Error handling using HTTP status codes
                 if (response.statusCode == 207) {
                     callback({errorMessage: "Some metadata is not uploaded successfully.", errorCode: 207, errorResponse:response.body},null,context);
-                }else if (response.statusCode == 429) {
+                } else if (response.statusCode == 429) {
                     callback({errorMessage: "Too many requests.", errorCode: 429, errorResponse:response.body},null,context);
-                }else if (response.statusCode == 500) {
+                } else if (response.statusCode == 500) {
                     callback({errorMessage: "Unexpected internal error.", errorCode: 500, errorResponse:response.body},null,context);
-                }else {
+                } else {
                     callback({errorMessage: "HTTP Response Not OK", errorCode: response.statusCode, errorResponse:response.body},null,context);
                 }
             }
@@ -196,11 +196,11 @@ var BulkController = {
                 //Error handling using HTTP status codes
                 if (response.statusCode == 207) {
                     callback({errorMessage: "Some metadata is not uploaded successfully.", errorCode: 207, errorResponse:response.body},null,context);
-                }else if (response.statusCode == 429) {
+                } else if (response.statusCode == 429) {
                     callback({errorMessage: "Too many requests.", errorCode: 429, errorResponse:response.body},null,context);
-                }else if (response.statusCode == 500) {
+                } else if (response.statusCode == 500) {
                     callback({errorMessage: "Unexpected internal error.", errorCode: 500, errorResponse:response.body},null,context);
-                }else {
+                } else {
                     callback({errorMessage: "HTTP Response Not OK", errorCode: response.statusCode, errorResponse:response.body},null,context);
                 }
             }
