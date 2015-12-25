@@ -1,0 +1,13 @@
+{
+  "name": "my name",
+  "version": "10",
+  "description": "Hosted Recommendation and Personalization API for developers",
+  "main": "./lib/index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "SuggestGrid",
+  "dependencies": {
+    "request": "^2.55.0",
+    "string": "^3.1.1"
+  }
+}
