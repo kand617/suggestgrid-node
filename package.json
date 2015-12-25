@@ -1,6 +1,6 @@
 {
   "name": "my name",
-  "version": "10",
+  "version": "0.1.5",
   "description": "Hosted Recommendation and Personalization API for developers",
   "main": "./lib/index.js",
   "scripts": {},
