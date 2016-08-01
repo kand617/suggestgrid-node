@@ -1,18 +1,16 @@
 # [ SuggestGrid Node.js Client ]( http://www.github.com/suggestgrid/suggestgrid-node )
-*Version 0.1.15-SNAPSHOT*
-
-Node.js is a first class citizen at [SuggestGrid](http://www.suggestgrid.com) with its curated client!
-Every endpoint of [SuggestGrid REST API](http://www.suggestgrid.com/docs/api) is available on SuggestGrid Node.js Client.
 
 We will walk through how to get started with SuggestGrid Node.js Client in three steps:
- 1. [Configure the client](#1-configure-the-client)
- 2. [Post actions](#2-post-actions)
- 3. [Get recommendations](#3-get-recommendations)
+    
+1. [Configure the client](#1-configure-the-client)
+    
+2. [Post actions](#2-post-actions)
+    
+3. [Get recommendations](#3-get-recommendations)
 
-If you did not [sign up for SuggestGrid](https://lcars.herokuapp.com/users/sign_up), this is the right time.
+If you did not [sign up for SuggestGrid](https://dashboard.suggestgrid.com/users/sign_up), this is the right time.
 
-
-## Getting Started with SuggestGrid Node.js Client
+## Getting Started
 In this guide we will demonstrate how to display personalized recommendations on an existing Node.js project.
 
 We have a movie catalog Node.js application, SuggestGridMovies, similar to IMDb.
@@ -29,7 +27,8 @@ We are beginning the development by adding the client as a dependency:
 ### 1. Configure the client
 Applications make their API requests to their dedicated sub-domain of `suggestgrid.space`.
 Most endpoints require a username and password for authentication.
-An initial user name and password is given on sign up or after Heroku provisioning.
+
+An initial user name and password is given on sign up.
 
 It is very convenient to configure SuggestGrid by setting an authenticated `SUGGESTGRID_URL` environment variable in the format below:
 
@@ -113,9 +112,3 @@ function recommendItems(userId, callback) {
   recommendationController.recommendItems({user_id: userId, size: 10}, 'view',callback);
 }
 ```
-
-
-
-
-## Further Reference
-For the client reference please refer to the [SuggestGrid Node.js Client Documentation](https://suggestgrid.com/docs/node/api)
