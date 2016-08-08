@@ -1,11 +1,11 @@
 {
   "name": "suggestgrid",
-  "version": "0.1.15-SNAPSHOT",
+  "version": "1.0.0",
   "description": "SuggestGrid is an recommendation and personalization service.",
   "main": "./lib/index.js",
   "scripts": {},
   "keywords": [],
-  "author": "SuggestGrid",
+  "author": "APIMATIC SDK Generator",
   "dependencies": {
     "request": "^2.55.0",
     "string": "^3.1.1"
