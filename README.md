@@ -21,9 +21,11 @@ Let's implement this feature in five minutes with SuggestGrid!
 ### 1. Configuration
 
 We are beginning the development by adding the client as a dependency:
+
 ```json
 "suggestgrid" : "https://github.com/suggestgrid/suggestgrid-node.git"
 ```
+
 
 
 Applications make their API requests to their dedicated sub-domain of `suggestgrid.space`.
