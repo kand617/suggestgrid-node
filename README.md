@@ -68,7 +68,7 @@ This could be done either from the dashboard or with a snippet like this:
 ```js
 var suggestgrid = require('suggestgrid')
 
- var typeController = suggestgrid.TypeController
+ var typeController = suggestgrid.TypeController;
  typeController.getType('views', function (error, response) {
     if (error) {
         typeController.createType('views', {}, function (error, response) {
@@ -88,11 +88,17 @@ We should invoke SuggestGrid client's ActionController.postAction when an user v
 We can do this by putting the snippet below on the relevant point:
 
 ```js
-var suggestgrid = require('suggestgrid')
+var suggestgrid = require('suggestgrid');
 
 app.get('/movie/:id', function (req, res) {
-    var action = new suggestgrid.Action({user_id: user.id, item_id:req.params.id});
-    suggestgrid.ActionController.postAction(action, 'views', function (error, response) {});
+
+    // create an action when user views a
+    var action = new suggestgrid.Action({type: "views", user_id: user.id, item_id:req.params.id});
+    suggestgrid.ActionController.postAction(action, function (error, response) {
+      if (error) {
+        console.error(error);
+      }
+    });
 });
 ```
 
@@ -115,6 +121,6 @@ var suggestgrid = require('suggestgrid')
 
 function recommendItems(userId, callback) {
   var recommendationController = suggestgrid.RecommendationController;
-  recommendationController.recommendItems({user_id: userId, size: 10}, 'view',callback);
+  recommendationController.recommendItems({type: 'views', user_id: userId, size: 10}, callback);
 }
 ```
