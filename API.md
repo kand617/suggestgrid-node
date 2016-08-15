@@ -148,10 +148,10 @@ actionController.postAction({type: "views", user_id: "20", item_id: "10", rating
 
 Name | Type |Required| Description
 --- | --- | --- | ---
-type|string|true|The type that the action belongs to.
-rating|number|false|The optional rating, if the type is explicit.
-item_id|string|true|The item id of the item the action is performed on.
 user_id|string|true|The user id of the performer of the action.
+type|string|true|The type that the action belongs to.
+item_id|string|true|The item id of the item the action is performed on.
+rating|number|false|The optional rating, if the type is explicit.
 ### Post Bulk Actions
 > `postBulkActions(actions, callback)`
 
@@ -332,7 +332,15 @@ Metadata methods are for posting and deleting metadata.
 For more information on metadata, refer to [Metadata concept documentation ](http://www.suggestgrid.com/docs/concepts#metadata).
 
 ### Post a User
+> `postUser(metadata, callback)`
+
 Posts a user metadata.
+
+```js
+metadataController.postUser({id: "9394182", age: 28, name: "Avis Horton"}, function(error, response) {
+  console.log(response);
+});
+```
 
 #### Parameters
 ##### Body Parameters
@@ -343,16 +351,55 @@ Name | Type |Required| Description
 --- | --- | --- | ---
 id|string|true|
 ### Post Bulk Users
+> `postBulkUsers(metadata, callback)`
+
 Post user metadata in bulk.
 This metadata can be used to filter or to be included in recommendations and similars methods.
 
 
+
+There's a limit of lines, hence number of actions you can send in one requests. That's default to 10000.
+
+An example for bulk user request is the following:
+
+```js
+
+var users = []
+
+users.push({id: "9394182", age: 28, name: "Avis Horton"});
+users.push({id: "6006895", age: 29, name: "Jami Bishop"});
+users.push({id: "6540497", age: 21, name: "Bauer Case"});
+users.push({id: "1967970", age: 30, name: "Rosetta Cole"});
+users.push({id: "6084106", age: 35, name: "Shaw Simon"});
+
+metadataController.postBulkUsers(users, function(error, response) {
+  console.log(response);
+});
+```
+
 #### Parameters
 ### Get Users
+> `getUsers(callback)`
+
 Get information about users. Only returns count at the moment.
 
+
+```js
+  metadataController.getUsers(function(error, response) {
+      console.log(response);
+  });
+```
+
 ### Delete a User
+> `deleteUser(userId, callback)`
+
 Delete a user metadata with the given user_id.
+
+```js
+metadataController.deleteUser("10", function(error, response) {
+  console.log(response);
+});
+```
 
 #### Parameters
 ##### URI/Query Parameters
@@ -361,12 +408,28 @@ Name | Type |Required| Description
 --- | --- | --- | ---
 user_id|string|true|The user_id to delete its metadata.
 ### Delete All Users
+> `deleteAllUsers(callback)`
+
 Deletes all user metadata from SuggestGrid.
 
+```js
+metadataController.deleteAllUsers(function(error, response) {
+  console.log(response);
+});
+```
+
 ### Post an Item
+> `postItem(metadata, callback)`
+
 Posts an item metadata.
 This metadata can be used to filter or to be included in recommendations and similars methods.
 
+
+```js
+metadataController.postItem({id: "25922342", manufacturer: "Vicon", price: 348}, function(error, response) {
+  console.log(response);
+});
+```
 
 #### Parameters
 ##### Body Parameters
@@ -377,16 +440,55 @@ Name | Type |Required| Description
 --- | --- | --- | ---
 id|string|true|
 ### Post Bulk Items
+> `postBulkItems(metadata, callback)`
+
 Post item metadata in bulk.
 This method is recommended for sharing stored data with SuggestGrid.
 
 
+
+There's a limit of lines, hence number of actions you can send in one requests. That's default to 10000.
+
+An example for bulk user request is the following:
+
+```js
+
+var items = []
+
+items.push({id: "25922342", manufacturer: "Vicon", price: 348});
+items.push({id: "80885987", manufacturer: "Aquamate", price: 771});
+items.push({id: "71746854", manufacturer: "Exoplode", price: 310});
+items.push({id: "53538832", manufacturer: "Teraprene", price: 832});
+items.push({id: "72006635", manufacturer: "Ohmnet", price: 340});
+
+metadataController.postBulkItems(items, function(error, response) {
+  console.log(response);
+});
+```
+
 #### Parameters
 ### Get Items
+> `getItems(callback)`
+
 Get information about items. Only returns count at the moment.
 
+
+```js
+  metadataController.getItems(function(error, response) {
+      console.log(response);
+  });
+```
+
 ### Delete an Item
+> `deleteItem(itemId, callback)`
+
 Delete an item metadata with the given item_id.
+
+```js
+metadataController.deleteItem("10", function(error, response) {
+  console.log(response);
+});
+```
 
 #### Parameters
 ##### URI/Query Parameters
@@ -395,9 +497,17 @@ Name | Type |Required| Description
 --- | --- | --- | ---
 item_id|string|true|The item_id to delete its metadata.
 ### Delete All Items
+> `deleteAllItems(callback)`
+
 Delete all items metadata.
 This method would flush all items metadata on SuggestGrid.
 
+
+```js
+metadataController.deleteAllItems(function(error, response) {
+  console.log(response);
+});
+```
 
 
 
@@ -406,7 +516,38 @@ Recommnedation methods are for getting recommended items or users responses from
 For more information on recommendations, refer to [Recommendations concept documentation](http://www.suggestgrid.com/docs/concepts#recommendations).
 
 ### Get Recommended Users
+> `getRecommendedUsers(body, callback)`
+
 Recommend users for the given body parameters.
+
+examples:
+
+```js
+recommendationController.getRecommendedUsers({type: 'view', item_id: "42"}, function(error, response) {
+  console.log(response.users); // [{id:"451"},{id:"456"}]
+});
+```
+
+```js
+recommendationController.getRecommendedUsers({type: 'view', item_ids: ["42", "532", "841"]}, function(error, response) {
+  console.log(response.users); // [{id:"121"},{id:"33"},{id:"12"},{id:"32"},{id:"49"},{id:"11"},{id:"23"},{id:"54"},{id:"62"},{id:"29"}]
+});
+```
+
+```js
+recommendationController.getRecommendedUsers({type: 'view', item_ids: ["42", "532", "841"], similar_user_id: "100", except: ["100"], size: 5}, function(error, response) {
+  console.log(response.users); // [{id:"1"},{id:"84"},{id:"9"},{id:"32"},{id:"45"}]
+});
+```
+
+
+```js
+recommendationController.getRecommendedUsers({type: 'view', item_id: "42", size: 5, fields: ["name"], filter: { less_equal: {age: 60}}}, function(error, response) {
+  console.log(response.users); // [{id:"11",name:"Robert"},{id:"848",name:"Mike"},{id:"2",name:"Jennifer"}]
+});
+```
+
+You can read [filters](/docs/concepts#filters) and [fields](/docs/concepts#fields) documentations for further reference.
 
 #### Parameters
 ##### Body Parameters
@@ -415,17 +556,53 @@ Recommend users for the given body parameters.
 
 Name | Type |Required| Description
 --- | --- | --- | ---
-size|integer|false|
-item_id|string|false|
-fields|array|false|
 except|array|false|These ids will not be included in the response. 
+item_id|string|false|
+types|string|false|
 type|string|false|
 item_ids|array|false|
-similar_user_id|string|false|
-types|string|false|
+fields|array|false|
 filter||false|
+size|integer|false|
+similar_user_id|string|false|
 ### Get Recommended Items
+> `getRecommendedItems(body, callback)`
+
 Recommend items for the given body parameters.
+
+examples:
+
+```js
+recommendationController.getRecommendedItems({type: 'view', user_id: "42"}, function(error, response) {
+  console.log(response.items); // [{id:"451"},{id:"456"}]
+});
+```
+
+```js
+recommendationController.getRecommendedItems({type: 'view', user_ids: ["42", "532", "841"]}, function(error, response) {
+  console.log(response.items); // [{id:"121"},{id:"33"},{id:"12"},{id:"32"},{id:"49"},{id:"11"},{id:"23"},{id:"54"},{id:"62"},{id:"29"}]
+});
+```
+
+```js
+recommendationController.getRecommendedItems({type: 'view', user_ids: ["42", "532", "841"], similar_item_id: "321", size: 3}, function(error, response) {
+  console.log(response.items); // [{id:"13"},{id:"65"},{id:"102"}]
+});
+```
+
+```ruby
+recommendationController.getRecommendedItems({type: 'view', user_id: "42", size: 5, filter: {less_equal: {price: 100}}}, function(error, response) {
+  console.log(response.items); // [{id:"930"},{id:"848"},{id:"102"},{id:"303"},{id:"593"}]
+});
+```
+
+```ruby
+recommendationController.getRecommendedItems({type: 'view', user_id: "42", size: 5, fields : ["category"], filter: { exact: {manufacturer: "Apple"}}}, function(error, response) {
+  console.log(response.items); // [{id:"930",category:"notebook"},{id:"848",category:"keyboard"},{id:"102",category:"watch"}]
+});
+```
+
+You can read [filters](/docs/concepts#filters) and [fields](/docs/concepts#fields) documentations for further reference.
 
 #### Parameters
 ##### Body Parameters
@@ -434,15 +611,15 @@ Recommend items for the given body parameters.
 
 Name | Type |Required| Description
 --- | --- | --- | ---
-size|integer|false|
-fields|array|false|
 user_id|string|false|
-user_ids|array|false|
+size|integer|false|
 except|array|false|These ids will not be included in the response. 
-type|string|false|
-similar_item_id|string|false|
 types|string|false|
+type|string|false|
+user_ids|array|false|
+fields|array|false|
 filter||false|
+similar_item_id|string|false|
 
 
 ## Similarity Methods
@@ -450,7 +627,31 @@ Similarity methods are for getting similar items or users responses from Suggest
 For more information on similars, refer to [Similarities concept documentation](http://www.suggestgrid.com/docs/concepts#similarities).
 
 ### Get Similar Users
+> `getSimilarUsers(body, callback)`
+
 Get similar users to a user.
+
+examples:
+
+```js
+similarityController.getSimilarUsers({type: "views", user_id: "1"}, function(error, response) {
+  console.log(response.users); // [{id:"1"},{id:"451"},{id:"456"}]
+});
+```
+
+```js
+similarityController.getSimilarUsers({type: "views", user_id: "1", except: ["1"]}, function(error, response) {
+  console.log(response.users); // [{id:"451"},{id:"456"}]
+});
+```
+
+```js
+similarityController.getSimilarUsers({type: "views", user_ids: ["42", "532", "841"], size: 3, fields: ["name"], filter: { less_equal: { age: 20}}, function(error, response) {
+  console.log(response.users); // [{id:"400", name:"Jason"},{id:"132", name:"Scarlett"},{id:"503", name:"Amy"}]
+});
+```
+
+You can read [filters](/docs/concepts#filters) and [fields](/docs/concepts#fields) documentations for further reference.
 
 #### Parameters
 ##### Body Parameters
@@ -459,16 +660,40 @@ Get similar users to a user.
 
 Name | Type |Required| Description
 --- | --- | --- | ---
-size|integer|false|
-fields|array|false|
 user_id|string|false|
-user_ids|array|false|
 except|array|false|These ids will not be included in the response. 
-type|string|false|
 types|string|false|
+type|string|false|
+user_ids|array|false|
+fields|array|false|
 filter||false|
+size|integer|false|
 ### Get Similar Items
+> `getSimilarItems(body, callback)`
+
 Get similar items to an item.
+
+examples:
+
+```js
+similarityController.getSimilarItems({type: "views", item_id: "1"}, function(error, response) {
+  console.log(response.items); // [{id:"1"},{id:"451"},{id:"456"}]
+});
+```
+
+```js
+similarityController.getSimilarItems({type: "views", item_id: "1", except: ["1"]}, function(error, response) {
+  console.log(response.items); // [{id:"451"},{id:"456"}]
+});
+```
+
+```js
+similarityController.getSimilarItems({type: "views", item_ids:  ["3","5","8"], size: 3, fields: ["category"], filter: { greater: { capacity: 60}}, function(error, response) {
+  console.log(response.items); // [{id:"451",category:"television"},{id:"656",category:"blu-ray-dvd-players"}]
+});
+```
+
+You can read [filters](/docs/concepts#filters) and [fields](/docs/concepts#fields) documentations for further reference.
 
 #### Parameters
 ##### Body Parameters
@@ -477,11 +702,11 @@ Get similar items to an item.
 
 Name | Type |Required| Description
 --- | --- | --- | ---
-size|integer|false|
-item_id|string|false|
-fields|array|false|
 except|array|false|These ids will not be included in the response. 
+item_id|string|false|
+types|string|false|
 type|string|false|
 item_ids|array|false|
-types|string|false|
+fields|array|false|
 filter||false|
+size|integer|false|
