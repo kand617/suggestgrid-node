@@ -148,9 +148,9 @@ actionController.postAction({type: "views", user_id: "20", item_id: "10", rating
 
 Name | Type |Required| Description
 --- | --- | --- | ---
-user_id|string|true|The user id of the performer of the action.
 type|string|true|The type that the action belongs to.
 item_id|string|true|The item id of the item the action is performed on.
+user_id|string|true|The user id of the performer of the action.
 rating|number|false|The optional rating, if the type is explicit.
 ### Post Bulk Actions
 > `postBulkActions(actions, callback)`
@@ -556,15 +556,15 @@ You can read [filters](/docs/concepts#filters) and [fields](/docs/concepts#field
 
 Name | Type |Required| Description
 --- | --- | --- | ---
-except|array|false|These ids will not be included in the response. 
-item_id|string|false|
+similar_user_id|string|false|
+size|integer|false|
 types|string|false|
+filter||false|
+item_id|string|false|
+except|array|false|These ids will not be included in the response. 
+fields|array|false|
 type|string|false|
 item_ids|array|false|
-fields|array|false|
-filter||false|
-size|integer|false|
-similar_user_id|string|false|
 ### Get Recommended Items
 > `getRecommendedItems(body, callback)`
 
@@ -590,13 +590,13 @@ recommendationController.getRecommendedItems({type: 'view', user_ids: ["42", "53
 });
 ```
 
-```ruby
+```js
 recommendationController.getRecommendedItems({type: 'view', user_id: "42", size: 5, filter: {less_equal: {price: 100}}}, function(error, response) {
   console.log(response.items); // [{id:"930"},{id:"848"},{id:"102"},{id:"303"},{id:"593"}]
 });
 ```
 
-```ruby
+```js
 recommendationController.getRecommendedItems({type: 'view', user_id: "42", size: 5, fields : ["category"], filter: { exact: {manufacturer: "Apple"}}}, function(error, response) {
   console.log(response.items); // [{id:"930",category:"notebook"},{id:"848",category:"keyboard"},{id:"102",category:"watch"}]
 });
@@ -611,15 +611,15 @@ You can read [filters](/docs/concepts#filters) and [fields](/docs/concepts#field
 
 Name | Type |Required| Description
 --- | --- | --- | ---
-user_id|string|false|
-size|integer|false|
-except|array|false|These ids will not be included in the response. 
-types|string|false|
-type|string|false|
-user_ids|array|false|
-fields|array|false|
-filter||false|
 similar_item_id|string|false|
+size|integer|false|
+types|string|false|
+filter||false|
+user_ids|array|false|
+user_id|string|false|
+except|array|false|These ids will not be included in the response. 
+fields|array|false|
+type|string|false|
 
 
 ## Similarity Methods
@@ -660,14 +660,14 @@ You can read [filters](/docs/concepts#filters) and [fields](/docs/concepts#field
 
 Name | Type |Required| Description
 --- | --- | --- | ---
+size|integer|false|
+types|string|false|
+filter||false|
+user_ids|array|false|
 user_id|string|false|
 except|array|false|These ids will not be included in the response. 
-types|string|false|
-type|string|false|
-user_ids|array|false|
 fields|array|false|
-filter||false|
-size|integer|false|
+type|string|false|
 ### Get Similar Items
 > `getSimilarItems(body, callback)`
 
@@ -702,11 +702,11 @@ You can read [filters](/docs/concepts#filters) and [fields](/docs/concepts#field
 
 Name | Type |Required| Description
 --- | --- | --- | ---
-except|array|false|These ids will not be included in the response. 
-item_id|string|false|
-types|string|false|
-type|string|false|
-item_ids|array|false|
-fields|array|false|
-filter||false|
 size|integer|false|
+types|string|false|
+filter||false|
+item_id|string|false|Get similar items to given item id. Either item id or item ids must be provided. 
+except|array|false|These ids will not be included in the response. 
+fields|array|false|
+type|string|false|
+item_ids|array|false|Get similar items to given item ids. Either item id or item ids must be provided. 
