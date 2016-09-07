@@ -148,10 +148,10 @@ actionController.postAction({type: "views", user_id: "20", item_id: "10", rating
 
 Name | Type |Required| Description
 --- | --- | --- | ---
-item_id|string|true|The item id of the item the action is performed on.
-user_id|string|true|The user id of the performer of the action.
-type|string|true|The type that the action belongs to.
 rating|number|false|The optional rating, if the type is explicit.
+user_id|string|true|The user id of the performer of the action.
+item_id|string|true|The item id of the item the action is performed on.
+type|string|true|The type that the action belongs to.
 ### Post Bulk Actions
 > `postBulkActions(actions, callback)`
 
@@ -557,14 +557,14 @@ You can read [filters](/docs/concepts#filters-parameter) and [fields](/docs/conc
 Name | Type |Required| Description
 --- | --- | --- | ---
 except|array|false|These ids will not be included in the response. 
-item_id|string|false|
+size|integer|false|
+item_ids|array|false|
+types|string|false|
 filter||false|
 fields|array|false|
 type|string|false|
-types|string|false|
-item_ids|array|false|
+item_id|string|false|
 similar_user_id|string|false|
-size|integer|false|
 ### Get Recommended Items
 > `getRecommendedItems(body, callback)`
 
@@ -612,14 +612,14 @@ You can read [filters](/docs/concepts#filters-parameter) and [fields](/docs/conc
 Name | Type |Required| Description
 --- | --- | --- | ---
 except|array|false|These ids will not be included in the response. 
-user_id|string|false|
-filter||false|
-user_ids|array|false|
-fields|array|false|
 size|integer|false|
-similar_item_id|string|false|
+user_id|string|false|
 types|string|false|
+filter||false|
+fields|array|false|
 type|string|false|
+similar_item_id|string|false|
+user_ids|array|false|
 
 
 ## Similarity Methods
@@ -661,13 +661,13 @@ You can read [filters](/docs/concepts#filters-parameter) and [fields](/docs/conc
 Name | Type |Required| Description
 --- | --- | --- | ---
 except|array|false|These ids will not be included in the response. 
-user_id|string|false|
-filter||false|
-user_ids|array|false|
-fields|array|false|
 size|integer|false|
+user_id|string|false|
 types|string|false|
+filter||false|
+fields|array|false|
 type|string|false|
+user_ids|array|false|
 ### Get Similar Items
 > `getSimilarItems(body, callback)`
 
@@ -703,10 +703,10 @@ You can read [filters](/docs/concepts#filters-parameter) and [fields](/docs/conc
 Name | Type |Required| Description
 --- | --- | --- | ---
 except|array|false|These ids will not be included in the response. 
-item_id|string|false|Get similar items to given item id. Either item id or item ids must be provided. 
+size|integer|false|
+item_ids|array|false|Get similar items to given item ids. Either item id or item ids must be provided. 
+types|string|false|
 filter||false|
 fields|array|false|
 type|string|false|
-types|string|false|
-item_ids|array|false|Get similar items to given item ids. Either item id or item ids must be provided. 
-size|integer|false|
+item_id|string|false|Get similar items to given item id. Either item id or item ids must be provided. 
