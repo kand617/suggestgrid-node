@@ -148,10 +148,10 @@ actionController.postAction({type: "views", user_id: "20", item_id: "10", rating
 
 Name | Type |Required| Description
 --- | --- | --- | ---
-type|string|true|The type that the action belongs to.
-item_id|string|true|The item id of the item the action is performed on.
-user_id|string|true|The user id of the performer of the action.
 rating|number|false|The optional rating, if the type is explicit.
+type|string|true|The type that the action belongs to.
+user_id|string|true|The user id of the performer of the action.
+item_id|string|true|The item id of the item the action is performed on.
 ### Post Bulk Actions
 > `postBulkActions(actions, callback)`
 
@@ -547,7 +547,7 @@ recommendationController.getRecommendedUsers({type: 'view', item_id: "42", size:
 });
 ```
 
-You can read [filters](/docs/concepts#filters) and [fields](/docs/concepts#fields) documentations for further reference.
+You can read [filters](/docs/concepts#filters-parameter) and [fields](/docs/concepts#fields-parameter) documentations for further reference.
 
 #### Parameters
 ##### Body Parameters
@@ -556,15 +556,15 @@ You can read [filters](/docs/concepts#filters) and [fields](/docs/concepts#field
 
 Name | Type |Required| Description
 --- | --- | --- | ---
-similar_user_id|string|false|
-size|integer|false|
+fields|array|false|
 types|string|false|
-filter||false|
+item_ids|array|false|
 item_id|string|false|
 except|array|false|These ids will not be included in the response. 
-fields|array|false|
+size|integer|false|
+filter||false|
+similar_user_id|string|false|
 type|string|false|
-item_ids|array|false|
 ### Get Recommended Items
 > `getRecommendedItems(body, callback)`
 
@@ -602,7 +602,7 @@ recommendationController.getRecommendedItems({type: 'view', user_id: "42", size:
 });
 ```
 
-You can read [filters](/docs/concepts#filters) and [fields](/docs/concepts#fields) documentations for further reference.
+You can read [filters](/docs/concepts#filters-parameter) and [fields](/docs/concepts#fields-parameter) documentations for further reference.
 
 #### Parameters
 ##### Body Parameters
@@ -612,13 +612,13 @@ You can read [filters](/docs/concepts#filters) and [fields](/docs/concepts#field
 Name | Type |Required| Description
 --- | --- | --- | ---
 similar_item_id|string|false|
-size|integer|false|
-types|string|false|
-filter||false|
-user_ids|array|false|
-user_id|string|false|
-except|array|false|These ids will not be included in the response. 
 fields|array|false|
+user_ids|array|false|
+types|string|false|
+except|array|false|These ids will not be included in the response. 
+size|integer|false|
+filter||false|
+user_id|string|false|
 type|string|false|
 
 
@@ -651,7 +651,7 @@ similarityController.getSimilarUsers({type: "views", user_ids: ["42", "532", "84
 });
 ```
 
-You can read [filters](/docs/concepts#filters) and [fields](/docs/concepts#fields) documentations for further reference.
+You can read [filters](/docs/concepts#filters-parameter) and [fields](/docs/concepts#fields-parameter) documentations for further reference.
 
 #### Parameters
 ##### Body Parameters
@@ -660,13 +660,13 @@ You can read [filters](/docs/concepts#filters) and [fields](/docs/concepts#field
 
 Name | Type |Required| Description
 --- | --- | --- | ---
-size|integer|false|
-types|string|false|
-filter||false|
-user_ids|array|false|
-user_id|string|false|
-except|array|false|These ids will not be included in the response. 
 fields|array|false|
+user_ids|array|false|
+types|string|false|
+except|array|false|These ids will not be included in the response. 
+size|integer|false|
+filter||false|
+user_id|string|false|
 type|string|false|
 ### Get Similar Items
 > `getSimilarItems(body, callback)`
@@ -693,7 +693,7 @@ similarityController.getSimilarItems({type: "views", item_ids:  ["3","5","8"], s
 });
 ```
 
-You can read [filters](/docs/concepts#filters) and [fields](/docs/concepts#fields) documentations for further reference.
+You can read [filters](/docs/concepts#filters-parameter) and [fields](/docs/concepts#fields-parameter) documentations for further reference.
 
 #### Parameters
 ##### Body Parameters
@@ -702,11 +702,11 @@ You can read [filters](/docs/concepts#filters) and [fields](/docs/concepts#field
 
 Name | Type |Required| Description
 --- | --- | --- | ---
-size|integer|false|
+fields|array|false|
 types|string|false|
-filter||false|
+item_ids|array|false|Get similar items to given item ids. Either item id or item ids must be provided. 
 item_id|string|false|Get similar items to given item id. Either item id or item ids must be provided. 
 except|array|false|These ids will not be included in the response. 
-fields|array|false|
+size|integer|false|
+filter||false|
 type|string|false|
-item_ids|array|false|Get similar items to given item ids. Either item id or item ids must be provided. 

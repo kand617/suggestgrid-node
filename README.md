@@ -36,11 +36,10 @@ An initial user name and password is given on sign up.
 
 It is very convenient to configure SuggestGrid by setting an authenticated `SUGGESTGRID_URL` environment variable in the format below:
 
-`http://{user}:{pass}@{app-uuid}.{region}.suggestgrid.space`
+`http://{user}:{pass}@{region}.suggestgrid.space/{app-uuid}`
 
 You can authenticate your application using `SUGGESTGRID_URL` environment variable like the example below:
 
-###### main.js
 ```js
 var suggestgrid = require('suggestgrid')
 var url = require('url')
@@ -64,7 +63,6 @@ Every recommendation logic needs to belong to a *type*.
 For this demonstration we can create an implicit type named as `views`.
 This could be done either from the dashboard or with a snippet like this:
 
-###### main.js
 ```js
 var suggestgrid = require('suggestgrid')
 

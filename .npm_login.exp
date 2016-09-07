@@ -1,0 +1,18 @@
+#! /usr/bin/expect -f
+
+set user $::env(PACKAGE_MANAGER_USER)
+set password $::env(PACKAGE_MANAGER_PASSWORD)
+set email $::env(PACKAGE_MANAGER_EMAIL)
+
+spawn npm login
+
+expect "Username: "
+send "$user\r"
+
+expect "Password: "
+send "$password\r"
+
+expect "Email: (this IS public) "
+send "$email\r"
+
+interact

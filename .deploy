@@ -1,0 +1,4 @@
+#! /bin/bash
+
+./.npm_login.exp
+npm publish
