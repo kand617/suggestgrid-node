@@ -1,6 +1,6 @@
 {
   "name": "suggestgrid",
-  "version": "0.1.22",
+  "version": "0.1.23-SNAPSHOT",
   "description": "SuggestGrid is a recommendation and personalization service.",
   "main": "./lib/index.js",
   "scripts": {},
