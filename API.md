@@ -214,7 +214,7 @@ actionController.postBulkActions(actions, function(error, response) {
 
 #### Parameters
 ### Get Actions
-> `getActions(type, userId, itemId, olderThan, callback)`
+> `getActions(type, userId, itemId, olderThan, from, size, callback)`
 
 Get actions. Defaut responses will be paged by 10 actios each.
 Type, user id, item id, or older than parameters could be provided.
@@ -224,7 +224,7 @@ Type, user id, item id, or older than parameters could be provided.
 #### Get Actions Count
 
 ```js
-actionController.getActions('views', null, null, null, function (error, response) {
+actionController.getActions('views', null, null, null, null, null, function (error, response) {
   console.log(response);
 });
 ```
@@ -238,7 +238,7 @@ If no type is provided, the total number of actions will be returned.
 This method can be particularly useful before deleting actions by query.
 
 ```js
-actionController.getActions(null, 'u5321', 'i1635', '891628467', function (error, response) {
+actionController.getActions(null, 'u5321', 'i1635', '891628467', null, null, function (error, response) {
  console.log(response);
 });
 ```
