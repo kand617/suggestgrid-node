@@ -248,10 +248,10 @@ actionController.getActions(null, 'u5321', 'i1635', '891628467', null, null, fun
 
 Name | Type |Required| Description
 --- | --- | --- | ---
-from|integer||The number of users to be skipped for response. Defaults to 0. Must be bigger than or equal to 0. This parameter must be string represetation of an integer like "1". 
+from|integer||The number of users to be skipped from the response. Defaults to 0. Must be bigger than or equal to 0. This parameter must be string represetation of an integer like "1". 
 item_id|string||The item id of the actions.
 older_than|string||Maxium timestamp of the actions. Valid times are in form of 1s, 1m, 1h, 1d, 1M, 1y, where 1 can be any integer, or a UNIX timestamp like 1443798195. 
-size|integer||The number of the users response. Defaults to 10. Must be between 1 and 10.000 inclusive. This parameter must be string represetation of an integer like "1". 
+size|integer||The number of the users response. Defaults to 10. Must be between 1 and 10,000 inclusive. This parameter must be string represetation of an integer like "1". 
 type|string||The type of the actions.
 user_id|string||The user id of the actions.
 ### Delete Actions
@@ -412,8 +412,8 @@ Page and per-page parameters could be set.
 
 Name | Type |Required| Description
 --- | --- | --- | ---
-from|integer||The number of users to be skipped for response. Defaults to 0. Must be bigger than or equal to 0. This parameter must be string represetation of an integer like "1". 
-size|integer||The number of the users response. Defaults to 10. Must be between 1 and 10.000 inclusive. This parameter must be string represetation of an integer like "1". 
+from|integer||The number of users to be skipped from the response. Defaults to 0. Must be bigger than or equal to 0. This parameter must be string represetation of an integer like "1". 
+size|integer||The number of the users response. Defaults to 10. Must be between 1 and 10,000 inclusive. This parameter must be string represetation of an integer like "1". 
 ### Delete a User
 > `deleteUser(userId, callback)`
 
@@ -528,8 +528,8 @@ Page and per-page parameters could be set.
 
 Name | Type |Required| Description
 --- | --- | --- | ---
-from|integer||The number of users to be skipped for response. Defaults to 0. Must be bigger than or equal to 0. This parameter must be string represetation of an integer like "1". 
-size|integer||The number of the users response. Defaults to 10. Must be between 1 and 10.000 inclusive. This parameter must be string represetation of an integer like "1". 
+from|integer||The number of users to be skipped from the response. Defaults to 0. Must be bigger than or equal to 0. This parameter must be string represetation of an integer like "1". 
+size|integer||The number of the users response. Defaults to 10. Must be between 1 and 10,000 inclusive. This parameter must be string represetation of an integer like "1". 
 ### Delete An Item
 > `deleteItem(itemId, callback)`
 
@@ -615,7 +615,7 @@ itemId|string|false|The item id of the query.
 itemIds|array|false|The item ids of the query. Exactly one of item id or item ids parameters must be provided.
 similarUserId|string|false|Similar user that the response should be similar to.
 similarUserIds|array|false|Similar users that the response should be similar to. At most one of similar user and similar users parameters can be provided. 
-size|integer|false|The number of users asked to return in the response. Defaults to 10. Must be between 1 and 10.000 inclusive.
+size|integer|false|The number of users requested. Defaults to 10. Must be between 1 and 10,000 inclusive.
 type|string|false|The type of the query.
 types|string|false|The types of the query. Exactly one of type or types parameters must be provided.
 ### Get Recommended Items
@@ -670,7 +670,7 @@ filter||false|
 from|integer|false|The number of most recommended items to be skipped from the response. Defaults to 0.
 similarItemId|string|false|Similar item that the response should be similar to.
 similarItemIds|array|false|Similar items that the response should be similar to. At most one of similar item and similar items parameters can be provided. 
-size|integer|false|The number of items asked to return in the response. Defaults to 10. Must be between 1 and 10.000 inclusive.
+size|integer|false|The number of items requested. Defaults to 10. Must be between 1 and 10,000 inclusive.
 type|string|false|The type of the query.
 types|string|false|The types of the query. Exactly one of type or types parameters must be provided.
 userId|string|false|The user id of the query.
@@ -719,7 +719,7 @@ except|array|false|These user ids that will not be included in the response.
 fields|array|false|The metadata fields to be included in returned user objects.
 filter||false|
 from|integer|false|The number of most similar users to be skipped from the response. Defaults to 0.
-size|integer|false|The number of users asked to return in the response. Defaults to 10. Must be between 1 and 10.000 inclusive.
+size|integer|false|The number of users requested. Defaults to 10. Must be between 1 and 10,000 inclusive.
 type|string|false|The type of the query.
 types|string|false|The types of the query. Exactly one of type or types parameters must be provided.
 userId|string|false|The user id of the query.
@@ -764,6 +764,6 @@ filter||false|
 from|integer|false|The number of most similar items to be skipped from the response. Defaults to 0.
 itemId|string|false|The item id of the query. Get similar items to given item id. Either item id or item ids must be provided.
 itemIds|array|false|The item ids of the query. Exactly one of item id or item ids parameters must be provided. Get similar items to given item ids. Either item id or item ids must be provided.
-size|integer|false|The number of items asked to return in the response. Defaults to 10. Must be between 1 and 10.000 inclusive.
+size|integer|false|The number of items requested. Defaults to 10. Must be between 1 and 10,000 inclusive.
 type|string|false|The type of the query.
 types|string|false|The types of the query. Exactly one of type or types parameters must be provided.
